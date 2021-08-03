@@ -1,0 +1,29 @@
+@import '../_variables.scss';
+
+.reply-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10rem;
+  width: calc(100% - 10rem);
+
+  &__option {
+    border: 2px solid $reply-color;
+    border-radius: 8px;
+    color: $reply-color;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: opacity 100ms, color 100ms, background-color 100ms,
+      border-color 100ms;
+
+    &:hover {
+      color: #000;
+      background-color: $reply-color;
+    }
+
+    &:active {
+      opacity: 50%;
+    }
+  }
+}
