@@ -1,11 +1,10 @@
 @import '../_variables.scss';
 
 .reply-selector {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-left: 10rem;
-  width: calc(100% - 10rem);
 
   &__option {
     border: 2px solid $reply-color;
@@ -13,9 +12,9 @@
     color: $reply-color;
     padding: 0.5rem 0.75rem;
     margin-bottom: 1rem;
+    max-width: 20rem;
     cursor: pointer;
-    transition: opacity 100ms, color 100ms, background-color 100ms,
-      border-color 100ms;
+    transition: color 100ms, background-color 100ms, border-color 100ms;
 
     &:hover {
       color: #000;
@@ -23,7 +22,10 @@
     }
 
     &:active {
-      opacity: 50%;
+      $activeColor: lighten($reply-color, 15%);
+      color: #000;
+      background-color: $activeColor;
+      border-color: $activeColor;
     }
   }
 }

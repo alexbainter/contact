@@ -1,0 +1,32 @@
+.pending-message {
+  display: flex;
+  &__dot {
+    margin: calc(0.25rem / 2) 0.1rem;
+    height: 0.75rem;
+    width: 0.75rem;
+    border-radius: 50%;
+    background-color: white;
+    animation-name: fade;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    &:nth-of-type(1) {
+      animation-delay: -666ms;
+    }
+
+    &:nth-of-type(2) {
+      animation-delay: -333ms;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 33%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}

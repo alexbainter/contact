@@ -3,11 +3,11 @@ import React from 'react';
 const nft = [
   {
     id: 'nft-check',
-    message: 'Let me guess... something something NFTs?',
+    message: 'Real quick... does this have something to do with NFTs?',
     replies: [
       {
-        message: "Yeah how'd you know?",
-        to: 'nft-terms',
+        message: "Yeah how'd you know?!",
+        to: 'nft-handler',
       },
       {
         message: 'Uhh... no?',
@@ -16,13 +16,14 @@ const nft = [
     ],
   },
   {
-    id: 'nft-terms',
+    id: 'nft-handler',
     message: 'Lucky guess...',
   },
   {
     message: "So here's the deal: I'm not interested in making or selling NFTs",
   },
   {
+    id: 'nft-terms',
     message:
       "I'm happy to build software that generates tokenizable output, but I don't want to be involved with selling it.",
   },
@@ -31,18 +32,43 @@ const nft = [
     replies: [
       {
         message: 'Sure!',
-        to: 'project-terms',
+        to: 'nft-agree',
       },
       {
         message: 'Not really...',
         to: 'project-denial',
       },
+      {
+        message: "Wait, why don't you like NFTs?",
+        to: 'nft-explanation',
+      },
     ],
   },
   {
     id: 'no-nft',
-    message: 'Oh thank god...',
+    message: 'Oh thank god. Anyways...',
     to: 'project-terms',
+  },
+  {
+    id: 'nft-agree',
+    message: 'Cool',
+    to: 'project-terms',
+  },
+  {
+    id: 'nft-explanation',
+    message: () => (
+      <>
+        You can find my thoughts on NFTs{' '}
+        <a
+          href="https://alexbainter.notion.site/NFTs-b24610b8189b4be8865aa834293086d4"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          here.
+        </a>
+      </>
+    ),
+    to: 'nft-terms',
   },
 ];
 
@@ -50,11 +76,11 @@ const project = [
   {
     id: 'project-terms',
     message:
-      "So I don't really have the energy for collaborations, but I can do commissions.",
+      "When working with others, I don't really have the energy for collaborations, but I can do commissions.",
   },
   {
     message:
-      "Or in other words, I only take on projects where I'm guaranteed payment.",
+      "In other words, I only take on projects where I'm guaranteed payment.",
   },
   {
     message: 'Were you planning to pay me for my work?',
@@ -64,7 +90,7 @@ const project = [
         to: 'project-acceptance',
       },
       {
-        message: "That's not quite what I had in mind",
+        message: 'Not exactly...',
         to: 'project-denial',
       },
     ],
@@ -75,11 +101,7 @@ const project = [
   },
   {
     message:
-      'Just to set expectations upfront, what I do is really a niche form of software development, and I charge accordingly.',
-  },
-  {
-    message:
-      "It doesn't make sense for me to take on projects that pay less than I could earn doing regular ol' software development, ya know?",
+      'Just to set expectations upfront, what I do is really a niche form of software engineering, and I charge accordingly.',
   },
   {
     message: 'My current rate is $125 per hour.',
@@ -89,11 +111,8 @@ const project = [
       'Obviously, different projects can take very different amounts of time to do.',
   },
   {
-    message: 'A common request is for me to build a custom music generator.',
-  },
-  {
     message:
-      "I usually budget about 10 hours of work for that, which doesn't include a website.",
+      'For example, a custom music generator can take ~10 hours, not including a website.',
   },
   {
     message:
@@ -103,7 +122,7 @@ const project = [
     message: () => (
       <>
         Send the details to{' '}
-        <a href="mailto:alex@alexbainter.com">alex@alexbainter.com</a> to get
+        <a href="mailto:hire@alexbainter.com">hire@alexbainter.com</a> to get
         started.
       </>
     ),
@@ -111,7 +130,7 @@ const project = [
   },
   {
     id: 'project-denial',
-    message: "I understand, but I can't help you with your project. Sorry!",
+    message: "I understand, but I don't think I can help you. Sorry!",
     to: 'anything-else',
   },
 ];
@@ -119,12 +138,9 @@ const project = [
 const licensing = [
   {
     id: 'licensing',
-    message: 'Yep!',
-  },
-  {
     message: () => (
       <>
-        Check out{' '}
+        Yep, check out{' '}
         <a href="https://record.generative.fm/licensing">
           record.generative.fm/licensing
         </a>
@@ -138,25 +154,25 @@ const licensing = [
 const showAndTell = [
   {
     id: 'show-and-tell',
-    message: "I'd love to see it!",
-  },
-  {
     message: () => (
       <>
         Send a link to{' '}
-        <a href="mailto:alex@alexbainter.com">alex@alexbainter.com</a>.
+        <a href="mailto:showandtell@alexbainter.com">
+          showandtell@alexbainter.com
+        </a>
+        .
       </>
     ),
   },
   {
-    message: "I probably won't respond but I will check it out.",
+    message: "I might not respond but I'll check it out.",
     to: 'anything-else',
   },
 ];
 
 const mainReplies = [
   {
-    message: 'I want to work with you on a project',
+    message: 'I was thinking we could work together',
     to: 'nft-check',
   },
   {
@@ -164,7 +180,7 @@ const mainReplies = [
     to: 'licensing',
   },
   {
-    message: 'I have a cool project to show you',
+    message: 'I want to show you something cool',
     to: 'show-and-tell',
   },
   {
@@ -183,14 +199,33 @@ const tree = [
     message: () => (
       <>
         Send an email to{' '}
-        <a href="mailto:alex@alexbainter.com">alex@alexbainter.com</a>.
+        <a href="mailto:hello@alexbainter.com">hello@alexbainter.com</a>.
       </>
     ),
+    replies: [
+      {
+        message: 'Thanks!',
+        to: 'anything-else',
+      },
+      {
+        message: 'I think a call might be better',
+        to: 'no-calls',
+      },
+    ],
   },
   {
     id: 'anything-else',
-    message: 'Is there anything else you wanted to talk about?',
+    message: 'Anything else?',
     replies: mainReplies,
+  },
+  {
+    id: 'no-calls',
+    message: "Sorry, I don't have the energy to call everyone who asks me to.",
+  },
+  {
+    message:
+      'If you want to discuss something, please include all the details in an email.',
+    to: 'anything-else',
   },
 ]
   .concat(nft)

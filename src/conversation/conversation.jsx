@@ -1,10 +1,11 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import Message from '../message/message.jsx';
+import PendingMessage from '../message/pending-message.jsx';
 import ReplySelector from '../reply-selector/reply-selector.jsx';
 import tree from './tree.jsx';
 import classes from './conversation.module.scss';
 
-const MESSAGE_DELAY = 1000;
+const MESSAGE_DELAY = 1500;
 
 const getMessagesToNextPrompt = (startId) => {
   const startingIndex = tree.findIndex(({ id }) => id === startId);
@@ -24,23 +25,34 @@ const getMessagesToNextPrompt = (startId) => {
 };
 
 const Conversation = () => {
-  const [chatLog, setChatLog] = useState([tree[0]]);
+  const [chatLog, setChatLog] = useState([]);
+  const [hasPendingMessage, setHasPendingMessage] = useState(true);
   const ref = useRef(null);
-  const currentReplies = chatLog[chatLog.length - 1].replies;
+  const currentReplies = chatLog.length && chatLog[chatLog.length - 1].replies;
   const handleReplySelect = (option) => {
     setChatLog((previous) =>
       previous.concat([Object.assign({}, option, { isReply: true })])
     );
     const messageBatch = getMessagesToNextPrompt(option.to);
+    setHasPendingMessage(true);
     messageBatch.forEach((message, i) => {
       setTimeout(() => {
         setChatLog((previous) => previous.concat(message));
-      }, i * MESSAGE_DELAY);
+        if (i === messageBatch.length - 1) {
+          setHasPendingMessage(false);
+        }
+      }, (i + 1) * MESSAGE_DELAY);
     });
   };
   useLayoutEffect(() => {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
-  }, [chatLog]);
+  }, [chatLog, hasPendingMessage, currentReplies]);
+  useEffect(() => {
+    setTimeout(() => {
+      setChatLog([tree[0]]);
+      setHasPendingMessage(false);
+    }, MESSAGE_DELAY);
+  }, []);
   return (
     <div className={classes.conversation} ref={ref}>
       {chatLog.map(({ message, isReply }, i) => (
@@ -52,7 +64,14 @@ const Conversation = () => {
           {typeof message === 'function' ? message() : message}
         </Message>
       ))}
-      {Array.isArray(currentReplies) && (
+      {hasPendingMessage && (
+        <PendingMessage
+          hasAuthor={
+            chatLog.length === 0 || chatLog[chatLog.length - 1].isReply
+          }
+        />
+      )}
+      {!hasPendingMessage && Array.isArray(currentReplies) && (
         <ReplySelector
           options={currentReplies}
           onSelect={(selectedReply) => handleReplySelect(selectedReply)}
