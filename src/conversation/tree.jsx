@@ -1,5 +1,8 @@
 import React from 'react';
 
+const NFT_EXPLANATION_URL =
+  'https://alexbainter.notion.site/NFTs-b24610b8189b4be8865aa834293086d4';
+
 const nft = [
   {
     id: 'nft-check',
@@ -59,16 +62,25 @@ const nft = [
     message: () => (
       <>
         You can find my thoughts on NFTs{' '}
-        <a
-          href="https://alexbainter.notion.site/NFTs-b24610b8189b4be8865aa834293086d4"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        <a href={NFT_EXPLANATION_URL} target="_blank" rel="noreferrer noopener">
           here.
         </a>
       </>
     ),
     to: 'nft-terms',
+  },
+  {
+    id: 'nft-request',
+    message: () => (
+      <>
+        Sorry, I'm not into NFTs. You can read my thoughts on them{' '}
+        <a href={NFT_EXPLANATION_URL} target="_blank" rel="noreferrer noopener">
+          here
+        </a>
+        .
+      </>
+    ),
+    to: 'anything-else',
   },
 ];
 
@@ -182,6 +194,10 @@ const mainReplies = [
   {
     message: 'I want to show you something cool',
     to: 'show-and-tell',
+  },
+  {
+    message: 'You should sell NFTs!',
+    to: 'nft-request',
   },
   {
     message: 'Something else...',
