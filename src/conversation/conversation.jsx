@@ -39,7 +39,6 @@ const Conversation = () => {
 
     let nextMessageDelay = FIRST_MESSAGE_DELAY;
     messageBatch.forEach((message, i) => {
-      console.log('scheduling message for ', nextMessageDelay);
       setTimeout(() => {
         setChatLog((previous) => previous.concat(message));
         if (i === messageBatch.length - 1) {

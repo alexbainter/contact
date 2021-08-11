@@ -2,6 +2,7 @@ import React from 'react';
 
 const NFT_EXPLANATION_URL =
   'https://alexbainter.notion.site/NFTs-b24610b8189b4be8865aa834293086d4';
+const DONATE_URL = 'https://play.generative.fm/donate';
 
 const nft = [
   {
@@ -71,15 +72,83 @@ const nft = [
   },
   {
     id: 'nft-request',
+    message: 'What makes you say that?',
+    replies: [
+      {
+        message: "I'd be interested in buying some",
+        to: 'nft-buy-request',
+      },
+      {
+        message: 'Other people might buy them (but not me)',
+        to: 'nft-no-buy',
+      },
+    ],
+  },
+  {
+    id: 'nft-buy-request',
+    message: 'What is it about NFTs that makes you want to buy some from me?',
+    replies: [
+      {
+        message: 'I mostly want to support you and your work',
+        to: 'nft-support',
+      },
+      {
+        message:
+          'I mostly want to collect your work, possibly as an investment',
+        to: 'nft-speculate',
+      },
+    ],
+  },
+  {
+    id: 'nft-support',
+    message: 'I really appreciate that!',
+  },
+  {
     message: () => (
       <>
-        Sorry, I'm not into NFTs. You can read my thoughts on them{' '}
-        <a href={NFT_EXPLANATION_URL} target="_blank" rel="noreferrer noopener">
-          here
+        I don't sell NFTs, but you can find better ways to support me and my
+        work at{' '}
+        <a href={DONATE_URL} target="_blank" rel="noreferrer noopener">
+          play.generative.fm/donate
         </a>
-        .
       </>
     ),
+    replies: [
+      {
+        message: 'Okay, thanks!',
+        to: 'anything-else',
+      },
+      {
+        message: 'But I want to collect some of your work',
+        to: 'nft-speculate',
+      },
+    ],
+  },
+  {
+    id: 'nft-speculate',
+    message: "I understand, but I can't really relate",
+  },
+  {
+    message:
+      "I've never seen a NFT I wanted to buy, so the idea of trying to sell them makes me a little uncomfortable",
+  },
+  {
+    message:
+      "You'll just have to accept that I choose not to tokenize my work. Sorry!",
+    replies: [
+      {
+        message: 'Okay, I understand',
+        to: 'anything-else',
+      },
+      {
+        message: 'But I want to support you.',
+        to: 'nft-support',
+      },
+    ],
+  },
+  {
+    id: 'nft-no-buy',
+    message: "Sorry, that's just not a great pitch...",
     to: 'anything-else',
   },
 ];
