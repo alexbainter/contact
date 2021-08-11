@@ -5,7 +5,8 @@ import ReplySelector from '../reply-selector/reply-selector.jsx';
 import tree from './tree.jsx';
 import classes from './conversation.module.scss';
 
-const MESSAGE_DELAY = 1500;
+const FIRST_MESSAGE_DELAY = 1500;
+const NEXT_MESSAGE_DELAY_PER_CHARACTER = 50;
 
 const getMessagesToNextPrompt = (startId) => {
   const startingIndex = tree.findIndex(({ id }) => id === startId);
@@ -35,13 +36,24 @@ const Conversation = () => {
     );
     const messageBatch = getMessagesToNextPrompt(option.to);
     setHasPendingMessage(true);
+
+    let nextMessageDelay = FIRST_MESSAGE_DELAY;
     messageBatch.forEach((message, i) => {
+      console.log('scheduling message for ', nextMessageDelay);
       setTimeout(() => {
         setChatLog((previous) => previous.concat(message));
         if (i === messageBatch.length - 1) {
           setHasPendingMessage(false);
         }
-      }, (i + 1) * MESSAGE_DELAY);
+      }, nextMessageDelay);
+      if (typeof message.message === 'string') {
+        nextMessageDelay += Math.max(
+          message.message.length * NEXT_MESSAGE_DELAY_PER_CHARACTER,
+          FIRST_MESSAGE_DELAY
+        );
+        return;
+      }
+      nextMessageDelay += FIRST_MESSAGE_DELAY;
     });
   };
   useLayoutEffect(() => {
@@ -51,7 +63,7 @@ const Conversation = () => {
     setTimeout(() => {
       setChatLog([tree[0]]);
       setHasPendingMessage(false);
-    }, MESSAGE_DELAY);
+    }, FIRST_MESSAGE_DELAY);
   }, []);
   return (
     <div className={classes.conversation} ref={ref}>
