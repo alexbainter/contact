@@ -6,10 +6,7 @@ const DONATE_URL = 'https://play.generative.fm/donate';
 
 const project = [
   {
-    id: 'project',
-    message: 'Cool, maybe I can help you out',
-  },
-  {
+    id: 'project-terms',
     message: 'Right now I only take on paid work, charged by the hour.',
   },
   {
@@ -18,6 +15,10 @@ const project = [
       {
         message: 'Sure!',
         to: 'project-acceptance',
+      },
+      {
+        message: 'I meant for something full-time',
+        to: 'hire',
       },
       {
         message: 'Not exactly...',
@@ -49,6 +50,7 @@ const project = [
       "I'd be happy to discuss what you had in mind and give you a rough estimate.",
   },
   {
+    id: 'hire',
     message: () => (
       <>
         Send the details to{' '}
@@ -103,7 +105,7 @@ const showAndTell = [
 const mainReplies = [
   {
     message: 'I was thinking we could work together',
-    to: 'project',
+    to: 'project-terms',
   },
   {
     message: 'Can I use your music for something?',
