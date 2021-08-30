@@ -4,170 +4,19 @@ const NFT_EXPLANATION_URL =
   'https://alexbainter.notion.site/NFTs-b24610b8189b4be8865aa834293086d4';
 const DONATE_URL = 'https://play.generative.fm/donate';
 
-const nft = [
+const project = [
   {
-    id: 'nft-check',
-    message: 'Real quick... does this have something to do with NFTs?',
-    replies: [
-      {
-        message: "Yeah how'd you know?!",
-        to: 'nft-handler',
-      },
-      {
-        message: 'Uhh... no?',
-        to: 'no-nft',
-      },
-    ],
+    id: 'project',
+    message: 'Cool, maybe I can help you out',
   },
   {
-    id: 'nft-handler',
-    message: 'Lucky guess...',
+    message: 'Right now I only take on paid work, charged by the hour.',
   },
   {
-    message: "So here's the deal: I'm not interested in making or selling NFTs",
-  },
-  {
-    id: 'nft-terms',
-    message:
-      "I'm happy to build software that generates tokenizable output, but I don't want to be involved with selling it.",
-  },
-  {
-    message: 'Is that an arrangement that could work for you?',
+    message: 'Would that work for you?',
     replies: [
       {
         message: 'Sure!',
-        to: 'nft-agree',
-      },
-      {
-        message: 'Not really...',
-        to: 'project-denial',
-      },
-      {
-        message: "Wait, why don't you like NFTs?",
-        to: 'nft-explanation',
-      },
-    ],
-  },
-  {
-    id: 'no-nft',
-    message: 'Oh thank god. Anyways...',
-    to: 'project-terms',
-  },
-  {
-    id: 'nft-agree',
-    message: 'Cool',
-    to: 'project-terms',
-  },
-  {
-    id: 'nft-explanation',
-    message: () => (
-      <>
-        You can find my thoughts on NFTs{' '}
-        <a href={NFT_EXPLANATION_URL} target="_blank" rel="noreferrer noopener">
-          here.
-        </a>
-      </>
-    ),
-    to: 'nft-terms',
-  },
-  {
-    id: 'nft-request',
-    message: 'What makes you say that?',
-    replies: [
-      {
-        message: "I'd be interested in buying some",
-        to: 'nft-buy-request',
-      },
-      {
-        message: 'Other people might buy them (but not me)',
-        to: 'nft-no-buy',
-      },
-    ],
-  },
-  {
-    id: 'nft-buy-request',
-    message: 'What is it about NFTs that makes you want to buy some from me?',
-    replies: [
-      {
-        message: 'I mostly want to support you and your work',
-        to: 'nft-support',
-      },
-      {
-        message:
-          'I mostly want to collect your work, possibly as an investment',
-        to: 'nft-speculate',
-      },
-    ],
-  },
-  {
-    id: 'nft-support',
-    message: 'I really appreciate that!',
-  },
-  {
-    message: () => (
-      <>
-        I don't sell NFTs, but you can find better ways to support me and my
-        work at{' '}
-        <a href={DONATE_URL} target="_blank" rel="noreferrer noopener">
-          play.generative.fm/donate
-        </a>
-      </>
-    ),
-    replies: [
-      {
-        message: 'Okay, thanks!',
-        to: 'anything-else',
-      },
-      {
-        message: 'But I want to collect some of your work',
-        to: 'nft-speculate',
-      },
-    ],
-  },
-  {
-    id: 'nft-speculate',
-    message: "I understand, but I can't really relate",
-  },
-  {
-    message:
-      "I've never seen a NFT I wanted to buy, so the idea of trying to sell them makes me a little uncomfortable",
-  },
-  {
-    message:
-      "You'll just have to accept that I choose not to tokenize my work. Sorry!",
-    replies: [
-      {
-        message: 'Okay, I understand',
-        to: 'anything-else',
-      },
-      {
-        message: 'But I want to support you.',
-        to: 'nft-support',
-      },
-    ],
-  },
-  {
-    id: 'nft-no-buy',
-    message: "Sorry, that's just not a great pitch...",
-    to: 'anything-else',
-  },
-];
-
-const project = [
-  {
-    id: 'project-terms',
-    message:
-      "When working with others, I don't really have the energy for collaborations, but I can do commissions.",
-  },
-  {
-    message:
-      "In other words, I only take on projects where I'm guaranteed payment.",
-  },
-  {
-    message: 'Were you planning to pay me for my work?',
-    replies: [
-      {
-        message: 'Of course!',
         to: 'project-acceptance',
       },
       {
@@ -182,7 +31,7 @@ const project = [
   },
   {
     message:
-      'Just to set expectations upfront, what I do is really a niche form of software engineering, and I charge accordingly.',
+      'Just to set expectations upfront, what I do is a niche form of software engineering, and I charge accordingly.',
   },
   {
     message: 'My current rate is $125 per hour.',
@@ -254,7 +103,7 @@ const showAndTell = [
 const mainReplies = [
   {
     message: 'I was thinking we could work together',
-    to: 'nft-check',
+    to: 'project',
   },
   {
     message: 'Can I use your music for something?',
@@ -266,7 +115,7 @@ const mainReplies = [
   },
   {
     message: 'You should sell NFTs!',
-    to: 'nft-request',
+    to: 'nfts',
   },
   {
     message: 'Something else...',
@@ -304,8 +153,13 @@ const tree = [
     replies: mainReplies,
   },
   {
+    id: 'nfts',
+    message: 'Stay tuned...',
+    to: 'anything-else',
+  },
+  {
     id: 'no-calls',
-    message: "Sorry, I don't have the energy to call everyone who asks me to.",
+    message: "Sorry, I don't have the energy to call everyone who asks me.",
   },
   {
     message:
@@ -313,7 +167,6 @@ const tree = [
     to: 'anything-else',
   },
 ]
-  .concat(nft)
   .concat(project)
   .concat(licensing)
   .concat(showAndTell);
