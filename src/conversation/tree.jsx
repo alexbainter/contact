@@ -156,7 +156,8 @@ const tree = [
   },
   {
     id: 'nfts',
-    message: 'Stay tuned...',
+    message:
+      "Thanks for the suggestion! I am considering it but that's all I have to say for now.",
     to: 'anything-else',
   },
   {
