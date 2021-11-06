@@ -6,7 +6,7 @@ import tree from './tree.jsx';
 import classes from './conversation.module.scss';
 
 const FIRST_MESSAGE_DELAY = 1500;
-const NEXT_MESSAGE_DELAY_PER_CHARACTER = 50;
+const NEXT_MESSAGE_DELAY_PER_CHARACTER = 40;
 
 const getMessagesToNextPrompt = (startId) => {
   const startingIndex = tree.findIndex(({ id }) => id === startId);

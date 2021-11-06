@@ -1,9 +1,5 @@
 import React from 'react';
 
-const NFT_EXPLANATION_URL =
-  'https://alexbainter.notion.site/NFTs-b24610b8189b4be8865aa834293086d4';
-const DONATE_URL = 'https://play.generative.fm/donate';
-
 const project = [
   {
     id: 'project-terms',
@@ -28,14 +24,10 @@ const project = [
   },
   {
     id: 'project-acceptance',
-    message: 'Great!',
+    message: 'Cool, thanks for understanding.',
   },
   {
-    message:
-      'Just to set expectations upfront, what I do is a niche form of software engineering, and I charge accordingly.',
-  },
-  {
-    message: 'My current rate is $125 per hour.',
+    message: "I'll set expectations upfront: my current rate is $250 per hour.",
   },
   {
     message:
@@ -47,17 +39,37 @@ const project = [
   },
   {
     message:
-      "I'd be happy to discuss what you had in mind and give you a rough estimate.",
+      'I can give you a rough estimate once I understand what you have in mind.',
+  },
+  {
+    message: 'How does that sound?',
+    replies: [
+      {
+        message: 'Sounds good to me!',
+        to: 'hire',
+      },
+      {
+        message: "That probably won't work for me",
+        to: 'project-denial',
+      },
+    ],
   },
   {
     id: 'hire',
     message: () => (
       <>
-        Send the details to{' '}
+        Great! Send the details to{' '}
         <a href="mailto:hire@alexbainter.com">hire@alexbainter.com</a> to get
         started.
       </>
     ),
+  },
+  {
+    message:
+      "Please explain in your email what you're thinking of and how I might be able to help you; don't just ask me to call you.",
+  },
+  {
+    message: '(not trying to be a dick, I just really prefer email over calls)',
     to: 'anything-else',
   },
   {
@@ -157,7 +169,7 @@ const tree = [
   {
     id: 'nfts',
     message:
-      "Thanks for the suggestion! I am considering it but that's all I have to say for now.",
+      "Thanks for the suggestion! I'm considering it but that's all I have to say for now.",
     to: 'anything-else',
   },
   {
