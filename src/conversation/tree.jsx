@@ -128,10 +128,6 @@ const mainReplies = [
     to: 'show-and-tell',
   },
   {
-    message: 'You should sell NFTs!',
-    to: 'nfts',
-  },
-  {
     message: 'Something else...',
     to: 'else',
   },
@@ -165,12 +161,6 @@ const tree = [
     id: 'anything-else',
     message: 'Anything else?',
     replies: mainReplies,
-  },
-  {
-    id: 'nfts',
-    message:
-      "Thanks for the suggestion! I'm considering it but that's all I have to say for now.",
-    to: 'anything-else',
   },
   {
     id: 'no-calls',
