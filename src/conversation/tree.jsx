@@ -2,6 +2,20 @@ import React from 'react';
 
 const project = [
   {
+    id: 'work-prompt',
+    message: 'Like for a project or something full time?',
+    replies: [
+      {
+        message: 'A project/part time',
+        to: 'project-terms',
+      },
+      {
+        message: 'Full time',
+        to: 'hire-ft',
+      },
+    ],
+  },
+  {
     id: 'project-terms',
     message: 'Right now I only take on paid work, charged by the hour.',
   },
@@ -11,10 +25,6 @@ const project = [
       {
         message: 'Sure!',
         to: 'project-acceptance',
-      },
-      {
-        message: 'I meant for something full-time',
-        to: 'hire',
       },
       {
         message: 'Not exactly...',
@@ -27,19 +37,14 @@ const project = [
     message: 'Cool, thanks for understanding.',
   },
   {
-    message: "I'll set expectations upfront: my current rate is $250 per hour.",
+    message: 'My current rate is $250 per hour.',
+  },
+  {
+    message: 'How I spend the hours you pay for is basically up to you.',
   },
   {
     message:
-      'Obviously, different projects can take very different amounts of time to do.',
-  },
-  {
-    message:
-      'For example, a custom music generator can take ~10 hours, not including a website.',
-  },
-  {
-    message:
-      'I can give you a rough estimate once I understand what you have in mind.',
+      'I could build something for you, we could pair program, or we could chat about a project. Whatever works best for you!',
   },
   {
     message: 'How does that sound?',
@@ -56,26 +61,38 @@ const project = [
   },
   {
     id: 'hire',
-    message: () => (
-      <>
-        Great! Send the details to{' '}
-        <a href="mailto:hire@alexbainter.com">hire@alexbainter.com</a> to get
-        started.
-      </>
-    ),
+    message: 'Great!',
   },
   {
     message:
-      "Please explain in your email what you're thinking of and how I might be able to help you; don't just ask me to call you.",
+      "Before I give you my email address, please understand: I'm happy to have an exploratory discussion over email, but I'll ask to be paid in advance for calls.",
   },
   {
-    message: '(not trying to be a dick, I just really prefer email over calls)',
+    message: () => (
+      <>
+        With that said, feel free to send the details to{' '}
+        <a href="mailto:hire@alexbainter.com">hire@alexbainter.com</a>.
+      </>
+    ),
+    to: 'anything-else',
+  },
+  {
+    id: 'hire-ft',
+    message: () => (
+      <>
+        Send the details to{' '}
+        <a href="mailto:jobs@alexbainter.com">jobs@alexbainter.com</a>.
+      </>
+    ),
     to: 'anything-else',
   },
   {
     id: 'project-denial',
     message: "I understand, but I don't think I can help you. Sorry!",
     to: 'anything-else',
+  },
+  {
+    id: 'hire-ft',
   },
 ];
 
@@ -117,7 +134,7 @@ const showAndTell = [
 const mainReplies = [
   {
     message: 'I was thinking we could work together',
-    to: 'project-terms',
+    to: 'work-prompt',
   },
   {
     message: 'Can I use your music for something?',
