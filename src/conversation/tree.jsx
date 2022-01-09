@@ -27,8 +27,44 @@ const project = [
         to: 'project-acceptance',
       },
       {
+        message: 'I was thinking more like a collab',
+        to: 'collab',
+      },
+
+      {
         message: 'Not exactly...',
         to: 'project-denial',
+      },
+    ],
+  },
+  {
+    id: 'collab',
+    message:
+      "I'm sorry, but I've let so many unpaid collaborations fall through, I had to stop agreeing to them.",
+  },
+  {
+    message:
+      "I simply don't have enough time or energy to help others work on their ideas instead of working on my own or earning a living.",
+  },
+  {
+    message:
+      "The only possible exceptions would be for people I'm excited to work with, or very interesting projects.",
+  },
+  {
+    message:
+      "The best chance we have of working together is if you're able to hire me.",
+    replies: [
+      {
+        message: 'Fair enough. Tell me more about hiring you.',
+        to: 'project-acceptance',
+      },
+      {
+        message: "I think you'll make an exception for me/my idea.",
+        to: 'else',
+      },
+      {
+        message: 'I understand. Have a nice day!',
+        to: 'anything-else',
       },
     ],
   },
@@ -161,7 +197,8 @@ const tree = [
     message: () => (
       <>
         Send an email to{' '}
-        <a href="mailto:hello@alexbainter.com">hello@alexbainter.com</a>.
+        <a href="mailto:hello@alexbainter.com">hello@alexbainter.com</a>, but
+        please understand if I don't respond.
       </>
     ),
     replies: [
