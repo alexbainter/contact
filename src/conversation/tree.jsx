@@ -44,7 +44,7 @@ const project = [
   },
   {
     message:
-      'I could build something for you, we could pair program, or we could chat about a project. Whatever works best for you!',
+      'I could build something for you, we could pair program, we could chat about a project, or whatever works best for you.',
   },
   {
     message: 'How does that sound?',
@@ -65,13 +65,14 @@ const project = [
   },
   {
     message:
-      "Before I give you my email address, please understand: I'm happy to have an exploratory discussion over email, but I'll ask to be paid in advance for calls.",
+      "I'm happy to chat over email with you, but for calls I ask to be paid for half of the expected duration in advance.",
   },
   {
     message: () => (
       <>
-        With that said, feel free to send the details to{' '}
-        <a href="mailto:hire@alexbainter.com">hire@alexbainter.com</a>.
+        Send me an email at{' '}
+        <a href="mailto:hire@alexbainter.com">hire@alexbainter.com</a> to get
+        started.
       </>
     ),
     to: 'anything-else',
