@@ -1,5 +1,7 @@
 import React from 'react';
 
+const RATE = 125;
+
 const project = [
   {
     id: 'work-prompt',
@@ -73,7 +75,7 @@ const project = [
     message: 'Cool, thanks for understanding.',
   },
   {
-    message: 'My current rate is $250 per hour.',
+    message: `My current rate is $${RATE} per hour.`,
   },
   {
     message: 'How I spend the hours you pay for is basically up to you.',
