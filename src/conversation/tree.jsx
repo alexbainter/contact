@@ -103,7 +103,7 @@ const project = [
   },
   {
     message:
-      "I'm happy to chat over email with you, but for calls I ask to be paid for half of the expected duration in advance.",
+      "I'm happy to chat over email with you, but for calls I ask to be paid in advance for the expected duration.",
   },
   {
     message: () => (
