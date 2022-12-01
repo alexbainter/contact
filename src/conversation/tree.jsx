@@ -130,9 +130,6 @@ const project = [
     message: "I understand, but I don't think I can help you. Sorry!",
     to: 'anything-else',
   },
-  {
-    id: 'hire-ft',
-  },
 ];
 
 const licensing = [
@@ -165,7 +162,7 @@ const showAndTell = [
     ),
   },
   {
-    message: "I might not respond but I'll check it out.",
+    message: "I might not respond but I'll check it out!",
     to: 'anything-else',
   },
 ];
@@ -221,11 +218,12 @@ const tree = [
   },
   {
     id: 'no-calls',
-    message: "Sorry, I don't have the energy to call everyone who asks me.",
+    message:
+      'Sorry, but random calls with strangers (no offense!) drain my energy.',
   },
   {
     message:
-      'If you want to discuss something, please include all the details in an email.',
+      'If you want to discuss something, please put it all in an email and allow me time to respond thoughtfully.',
     to: 'anything-else',
   },
 ]
