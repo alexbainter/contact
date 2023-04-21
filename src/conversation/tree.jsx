@@ -19,14 +19,11 @@ const project = [
   },
   {
     id: 'project-terms',
-    message: 'Right now I only take on paid work, charged by the hour.',
-  },
-  {
-    message: 'Would that work for you?',
+    message: 'Right now I only take on paid work. Would that work for you?',
     replies: [
       {
-        message: 'Sure!',
-        to: 'project-acceptance',
+        message: 'Maybe!',
+        to: 'hire',
       },
       {
         message: 'I was thinking more like a collab',
@@ -34,7 +31,7 @@ const project = [
       },
 
       {
-        message: 'Not exactly...',
+        message: "I don't think so",
         to: 'project-denial',
       },
     ],
@@ -42,11 +39,7 @@ const project = [
   {
     id: 'collab',
     message:
-      "I'm sorry, but I've let so many unpaid collaborations fall through, I had to stop agreeing to them.",
-  },
-  {
-    message:
-      "I simply don't have enough time or energy to help others work on their ideas instead of working on my own or earning a living.",
+      "I'm sorry, I don't have the capacity to help others work on their ideas instead of working on my own or earning a living.",
   },
   {
     message:
@@ -57,55 +50,26 @@ const project = [
       "The best chance we have of working together is if you're able to hire me.",
     replies: [
       {
-        message: 'Fair enough. Tell me more about hiring you.',
-        to: 'project-acceptance',
+        message: "Fair enough, I'm open to hiring you.",
+        to: 'collab-redirect',
       },
       {
-        message: "I think you'll make an exception for me/my idea.",
+        message: "I think you'll make an exception for me or my idea.",
         to: 'else',
       },
       {
-        message: 'I understand. Have a nice day!',
+        message: "I understand, but that won't work for me. Have a nice day!",
         to: 'anything-else',
       },
     ],
   },
   {
-    id: 'project-acceptance',
-    message: 'Cool, thanks for understanding.',
-  },
-  {
-    message: `My current rate is $${RATE} per hour.`,
-  },
-  {
-    message: 'How I spend the hours you pay for is basically up to you.',
-  },
-  {
-    message:
-      'I could build something for you, we could pair program, we could chat about a project, or whatever works best for you.',
-  },
-  {
-    message: 'How does that sound?',
-    replies: [
-      {
-        message: 'Sounds good to me!',
-        to: 'hire',
-      },
-      {
-        message: "That probably won't work for me",
-        to: 'project-denial',
-      },
-    ],
+    id: 'collab-redirect',
+    message: 'Great, thanks for understanding.',
+    to: 'hire',
   },
   {
     id: 'hire',
-    message: 'Great!',
-  },
-  {
-    message:
-      "I'm happy to chat over email with you, but for calls I ask to be paid in advance for the expected duration.",
-  },
-  {
     message: () => (
       <>
         Send me an email at{' '}
