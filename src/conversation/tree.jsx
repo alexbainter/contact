@@ -43,7 +43,7 @@ const project = [
   },
   {
     message:
-      "The only possible exceptions would be for people I'm excited to work with, or very interesting projects.",
+      "The only possible exceptions would be for people I'm excited to work with, or very interesting creative projects.",
   },
   {
     message:
@@ -83,8 +83,8 @@ const project = [
     id: 'hire-ft',
     message: () => (
       <>
-        Send the details to{' '}
-        <a href="mailto:jobs@alexbainter.com">jobs@alexbainter.com</a>.
+        That's great! Please get in touch at{' '}
+        <a href="mailto:jobs@alexbainter.com">jobs@alexbainter.com</a>
       </>
     ),
     to: 'anything-else',
